@@ -1,0 +1,55 @@
+{
+  "_args": [
+    [
+      "govuk-elements-sass@3.1.2",
+      "/Users/luke/Desktop/Cabinet Office Github/cswp-submit-facility-time"
+    ]
+  ],
+  "_development": true,
+  "_from": "govuk-elements-sass@3.1.2",
+  "_id": "govuk-elements-sass@3.1.2",
+  "_inBundle": false,
+  "_integrity": "sha1-THmmiTxQDlyBet6NUAjnCfcYo8M=",
+  "_location": "/govuk-elements-sass",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "govuk-elements-sass@3.1.2",
+    "name": "govuk-elements-sass",
+    "escapedName": "govuk-elements-sass",
+    "rawSpec": "3.1.2",
+    "saveSpec": null,
+    "fetchSpec": "3.1.2"
+  },
+  "_requiredBy": [
+    "#DEV:/"
+  ],
+  "_resolved": "https://registry.npmjs.org/govuk-elements-sass/-/govuk-elements-sass-3.1.2.tgz",
+  "_spec": "3.1.2",
+  "_where": "/Users/luke/Desktop/Cabinet Office Github/cswp-submit-facility-time",
+  "author": {
+    "name": "GOV.UK Design System Team",
+    "email": "design-system-developers@digital.cabinet-office.gov.uk",
+    "url": "Government Digital Service"
+  },
+  "bugs": {
+    "url": "https://github.com/alphagov/govuk_elements/issues"
+  },
+  "dependencies": {
+    "govuk_frontend_toolkit": "^7.1.0"
+  },
+  "description": "GOVUK elements Sass files",
+  "engines": {
+    "node": ">=6.0"
+  },
+  "homepage": "https://github.com/alphagov/govuk_elements#readme",
+  "license": "MIT",
+  "name": "govuk-elements-sass",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alphagov/govuk_elements.git"
+  },
+  "sass": "./public/_elements.scss",
+  "version": "3.1.2"
+}

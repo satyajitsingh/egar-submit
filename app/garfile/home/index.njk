@@ -1,0 +1,64 @@
+{% extends "common/templates/layout.njk" %}
+
+{% import "common/templates/includes/macros.njk" as m %}
+
+{% block page_title %}
+	Aircraft Details
+{% endblock %}
+ 
+{% block content %}
+
+<main id="content" role="main">
+
+  {% include "common/templates/includes/phase.njk" %}
+
+	{% if errors %}
+		{% include "common/templates/includes/errors.njk" %}
+	{% endif %}
+
+  <div class="grid-row">
+
+  <div class="column-two-thirds column">
+    <div class="govuk-grid-column-full">
+      <header>
+        <h1 class="heading-large">
+         Aircraft Details
+        </h1>
+      </header>
+    </div>
+    <span >
+            Enter the aircraft details below 
+          </span>
+    <div>
+      <form action="/garfile/aircraft"  class="form" method="post">                   
+        <div class="form-group {{ m.error_message('aircraftreg', errors) }} ">
+          <a name="aircraftregistration"></a>
+          <label class="form-label" for="aircrft-reg">Aircraft registration number
+            <span class="form-hint">
+              Enter the aircraft registration without hyphens or other special characters
+            </span>
+          </label>
+          {{ m.error_message('aircraft', errors) }}
+          <input autocomplete="off" class="form-control"  data-val="true" 
+          data-val-required="The aircraft registration is required." id="aircraft-reg" 
+          name="regno" style="width:100%" type="text" value="" />
+        </div>
+        
+        <div class="form-group {{ m.error_message('aircrafttype', errors) }} ">
+          <a name="aircrafttype"></a>
+          <label class="form-label" for="aircraft-type">
+            Aircraft type
+            <span class="form-hint">
+              Enter the aircraft type
+            </span>
+          </label>
+       
+           {{ m.error_message('aircrafttype', errors) }}
+          <input autocomplete="off" class="form-control"  data-val="true" 
+          data-val-required="The aircraft type is required." id="aircraft-type" 
+          name="type" style="width:100%" type="text" value="" />
+        </div>  
+    </div>
+  </div>
+</main>
+{% endblock %}

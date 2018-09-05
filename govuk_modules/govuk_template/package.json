@@ -1,0 +1,50 @@
+{
+  "_from": "govuk_template_jinja@^0.24.0",
+  "_id": "govuk_template_jinja@0.24.0",
+  "_inBundle": false,
+  "_integrity": "sha1-vPimdFF41FZWEv2lD5ll4qf9BMg=",
+  "_location": "/govuk_template_jinja",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "govuk_template_jinja@^0.24.0",
+    "name": "govuk_template_jinja",
+    "escapedName": "govuk_template_jinja",
+    "rawSpec": "^0.24.0",
+    "saveSpec": null,
+    "fetchSpec": "^0.24.0"
+  },
+  "_requiredBy": [
+    "#DEV:/"
+  ],
+  "_resolved": "https://registry.npmjs.org/govuk_template_jinja/-/govuk_template_jinja-0.24.0.tgz",
+  "_shasum": "bcf8a6745178d4565612fda50f9965e2a7fd04c8",
+  "_spec": "govuk_template_jinja@^0.24.0",
+  "_where": "/Users/luke/Desktop/Cabinet Office Github/cswp-submit-facility-time",
+  "author": {
+    "name": "Government Digital Service developers",
+    "url": "https://gds.blog.gov.uk/"
+  },
+  "bugs": {
+    "url": "https://github.com/alphagov/govuk_template_jinja/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Jinja packaged version of the GOV.UK template",
+  "homepage": "https://github.com/alphagov/govuk_template_jinja#readme",
+  "keywords": [
+    "alphagov",
+    "govuk",
+    "jinja",
+    "template"
+  ],
+  "license": "MIT",
+  "main": "views/layouts/govuk_template.html",
+  "name": "govuk_template_jinja",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alphagov/govuk_template_jinja.git"
+  },
+  "version": "0.24.0"
+}

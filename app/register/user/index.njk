@@ -1,0 +1,69 @@
+{% extends "common/templates/layout.njk" %}
+
+{% import "common/templates/includes/macros.njk" as m %}
+
+{% block page_title %}
+	Sign In
+{% endblock %}
+ 
+{% block content %}
+
+<main id="content" role="main">
+
+  {% include "common/templates/includes/phase.njk" %}
+
+  {% include "common/templates/includes/back.njk" %}
+
+	{% if errors %}
+		{% include "common/templates/includes/errors.njk" %}
+	{% endif %}
+
+  <div class="grid-row">
+
+   <div class="column-two-thirds column">
+    <div class="govuk-grid-column-full">
+      <header>
+        <h1 class="heading-large">
+           Sign in
+        </h1>
+      </header>
+    </div>
+    <span >
+            Enter your EGAR cedentials to Sign in. 
+          </span>
+    <div>
+      <form action="/register/user" autocomplete="new-password" class="form-group" method="post" role="form" style="margin-top:20px">                    <input type="password" style="visibility: hidden" />
+        <div class="form-group ">
+          <label class="form-label" for="user-id">Email address</label>
+          <span class="form-hint">
+            Enter the email address you used to register for the EGAR service
+          </span>
+          <span class="field-validation-valid error-message" data-valmsg-for="Username" 
+            data-valmsg-replace="true" style="display:block">
+          </span>
+          <input autocomplete="off" class="form-control" 
+            data-val="true" data-val-required="The e-mail address field is  required." id="user-id" name="Username" style="width:100%" type="text" value="" />
+
+          <label class="form-label" for="password">Password</label>
+          <span class="form-hint">
+            Enter your password
+          </span>
+          <span class="field-validation-valid error-message" data-valmsg-for="Password" data-valmsg-replace="true" style="display:block"></span>
+          <input autocomplete="off" class="form-control" data-val="true" data-val-required="The Password field is required." id="password" name="Password" style="width:100%" type="password" />
+        </div>
+        <div class="form-group">
+          <input id="login" class="button" type="submit" value="Sign in" onclick="sendAnalytics(event, 'Sign in - submit', 'click')">
+        </div>
+        <h2> Problems signing in </2>
+        <p>
+            <a href="/submit-a-general-aviation-report/Account/Forgot" onclick="sendAnalytics(event, &#39;Forgotten password&#39;, &#39;click&#39;)" target="_self">Forgotten password</a>
+        </p>
+      </form>
+      <p class="heading-small">
+        <a href="/submit-a-general-aviation-report/Account/PreRegister" onclick="sendAnalytics(event, &#39;Register for a new account&#39;, &#39;click&#39;)" target="_self">Register for a new account</a>
+      </p>
+    </div>
+
+  </div>
+</main>
+{% endblock %}

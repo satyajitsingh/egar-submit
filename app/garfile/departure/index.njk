@@ -1,0 +1,95 @@
+{% extends "common/templates/layout.njk" %}
+
+{% import "common/templates/includes/macros.njk" as m %}
+
+{% block page_title %}
+	Departure Details - {{title_suffix}}
+{% endblock %}
+ 
+{% block content %}
+
+<main id="content" role="main">
+
+  {% include "common/templates/includes/phase.njk" %}
+
+  {% include "common/templates/includes/back.njk" %}
+
+	{% if errors %}
+		{% include "common/templates/includes/errors.njk" %}
+	{% endif %}
+
+  <div class="grid-row">
+
+  <div class="column-two-thirds column">
+    <div class="govuk-grid-column-full">
+      <header>
+        <h1 class="heading-large">
+         Departure Details
+        </h1>
+        <p class="bold-small">A separate GAR submission is required for each leg of your journey</p>
+      </header>
+    </div>
+
+    <div>
+      <form action="/garfile/aircraft"  class="form" method="post">    
+      <form action="/garfile/depature" class="form" method="post">    
+      <div class ="grid-row">
+        <div class="form-group ">
+            <a name="Flight_Number"></a>
+            <label class="form-label" for="flight_no" >
+              Date of departure
+              <span class="form-hint">
+                Enter the Date of Departure
+              </span>
+            </label> 
+            <div class="form-group form-group-day">
+              <label for="912Day" class="form-label" aria-label="Date of departure Day">Day</label>
+              
+              <input class="form-control" id="912Day" name="912Day" placeholder="DD" type="text" value="18" />
+          </div>
+        <div class="form-group form-group-month">
+            <label for="912Month" class="form-label" aria-label="Date of departure Month">Month</label>
+            
+            <input class="form-control" id="912Month" name="912Month" placeholder="MM" type="text" value="09" />
+        </div>
+        <div class="form-group form-group-year">
+            <label for="912Year" class="form-label" aria-label="Date of departure Year">Year</label>
+            
+            <input class="form-control" id="912Year" name="912Year" placeholder="YYYY" type="text" value="2017" />      
+          
+          <input class="form-control" id="flght_num" name="flightno" autocomplete="off" type="text" value="" required="true"/>
+        </div>
+
+        <div class="form-group {{ m.error_message('aircraftreg', errors) }} ">
+          <a name="aircraftregistration"></a>
+          <label class="form-label" for="aircrft-reg">Aircraft registration number
+            <span class="form-hint">
+              Enter the aircraft registration without hyphens or other special characters
+            </span>
+          </label>
+          {{ m.error_message('aircraft', errors) }}
+          <input autocomplete="off" class="form-control"  required="true" id="aircraft-reg" name="regno"  type="text" value="" />
+        </div>
+        
+        <div class="form-group {{ m.error_message('aircrafttype', errors) }} ">
+          <a name="aircrafttype"></a>
+          <label class="form-label" for="aircraft-type">
+            Aircraft type
+            <span class="form-hint">
+              Enter the aircraft type
+            </span>
+          </label>       
+           {{ m.error_message('aircrafttype', errors) }}
+          <input autocomplete="off" class="form-control" required="true" id="aircraft-type" name="type" type="text" value="" />
+        </div>  
+
+    </div>
+
+     <div class="form-group">
+	  		<input type="submit" class="button" value="Save & Continue">
+		</div>
+
+    </form>
+  </div>
+</main>
+{% endblock %}
