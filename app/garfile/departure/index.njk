@@ -31,62 +31,117 @@
     </div>
 
     <div>
-      <form action="/garfile/aircraft"  class="form" method="post">    
-      <form action="/garfile/depature" class="form" method="post">    
-      <div class ="grid-row">
-        <div class="form-group ">
-            <a name="Flight_Number"></a>
-            <label class="form-label" for="flight_no" >
-              Date of departure
-              <span class="form-hint">
-                Enter the Date of Departure
-              </span>
-            </label> 
+     <form action="/garfile/depature" class="form" method="post">    
+      <div class="form-group  {{ m.form_group_class('departure', errors) }}">
+        <fieldset>
+          {{ m.error_message('departure', errors) }}
+          <legend>
+            <span class="form-label-bold">
+              What is the date of depature?
+            </span>
+            <span class="form-hint">For example, 31 3 1980</span>
+          </legend>
+          <div class="form-date">
             <div class="form-group form-group-day">
-              <label for="912Day" class="form-label" aria-label="Date of departure Day">Day</label>
-              
-              <input class="form-control" id="912Day" name="912Day" placeholder="DD" type="text" value="18" />
+              <label class="form-label" for="dod-day">Day</label>
+              <input class="form-control" id="dod-day" name="dod-day" type="number" pattern="[0-9]*">
+            </div>
+            <div class="form-group form-group-month">
+              <label class="form-label" for="dod-month">Month</label>
+              <input class="form-control" id="dod-month" name="dod-month" type="number" pattern="[0-9]*">
+            </div>
+            <div class="form-group form-group-year">
+              <label class="form-label" for="dod-year">Year</label>
+              <input class="form-control" id="dod-year" name="dod-year" type="number" pattern="[0-9]*">
+            </div>
           </div>
-        <div class="form-group form-group-month">
-            <label for="912Month" class="form-label" aria-label="Date of departure Month">Month</label>
-            
-            <input class="form-control" id="912Month" name="912Month" placeholder="MM" type="text" value="09" />
-        </div>
-        <div class="form-group form-group-year">
-            <label for="912Year" class="form-label" aria-label="Date of departure Year">Year</label>
-            
-            <input class="form-control" id="912Year" name="912Year" placeholder="YYYY" type="text" value="2017" />      
+        </fieldset>
+      </div>
+
+      <div class="form-group">
+        <fieldset>
+          <legend>
+            <span class="form-label-bold">
+              What is the time of depature?
+            </span>
+            <span class="form-hint">For example, 17 44</span>
+          </legend>
+          <div class="form-date">
+            <div class="form-group form-group-day">
+              <label class="form-label" for="dod-hour">Hour</label>
+              <input class="form-control" id="dod-hour" name="dod-hour" type="number" pattern="[0-23]*">
+            </div>
+            <div class="form-group form-group-month">
+              <label class="form-label" for="dod-min">Minute</label>
+              <input class="form-control" id="dod-min" name="dod-min" type="number" pattern="[0-59]*">
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <p></p>
+      
+      
+      <div class="form-group">
+        <fieldset>
+          <legend>
+            <span class="form-label-bold">
+              What is the port of departure (select one)?
+            </span>
+          </legend>
           
-          <input class="form-control" id="flght_num" name="flightno" autocomplete="off" type="text" value="" required="true"/>
-        </div>
+          <div class="multiple-choice"  data-target="port-is-icao">
+            <input id="port-icao" type="radio" name="radio-port-group" value="Yes">
+            <label for="port-icao">ICAO</label>
+          </div>
+          <div class="panel panel-border-narrow js-hidden" id="port-is-icao">
+            <label class="form-label" for="porticao">ICAO Port</label>
+            <input class="form-control" name="porticao" type="text" id="porticao">
+          </div>
 
-        <div class="form-group {{ m.error_message('aircraftreg', errors) }} ">
-          <a name="aircraftregistration"></a>
-          <label class="form-label" for="aircrft-reg">Aircraft registration number
-            <span class="form-hint">
-              Enter the aircraft registration without hyphens or other special characters
-            </span>
-          </label>
-          {{ m.error_message('aircraft', errors) }}
-          <input autocomplete="off" class="form-control"  required="true" id="aircraft-reg" name="regno"  type="text" value="" />
-        </div>
-        
-        <div class="form-group {{ m.error_message('aircrafttype', errors) }} ">
-          <a name="aircrafttype"></a>
-          <label class="form-label" for="aircraft-type">
-            Aircraft type
-            <span class="form-hint">
-              Enter the aircraft type
-            </span>
-          </label>       
-           {{ m.error_message('aircrafttype', errors) }}
-          <input autocomplete="off" class="form-control" required="true" id="aircraft-type" name="type" type="text" value="" />
-        </div>  
+          <div class="multiple-choice" data-target="port-is-iata">
+            <input id="port-iata" type="radio" name="radio-port-group" value="">
+            <label for="port-iata">IATA</label>
+          </div>
+          <div class="panel panel-border-narrow js-hidden" id="port-is-iata">
+            <label class="form-label" for="portiata">IATA Port</label>
+            <input class="form-control" name="portiata" type="text" id="portiata">
+          </div>
 
-    </div>
+          <div class="multiple-choice" data-target="port-is-latlong">
+            <input id="port-latlong" type="radio" name="radio-port-group" value="">
+            <label for="port-latlong">Latitude/Longitude</label>
+          </div>
+          <div class="panel panel-border-narrow js-hidden" id="port-is-latlong">
+            <label class="form-label" for="portlatlong">Enter latitude/longitude</label>
+            <input class="form-control" name="portlatlong" type="text" id="portlatlong">
+          </div>
 
-     <div class="form-group">
-	  		<input type="submit" class="button" value="Save & Continue">
+          <div class="multiple-choice" data-target="port-is-postcode">
+            <input id="port-postcode" type="radio" name="radio-port-group" value="">
+            <label for="port-postcode">PostCode</label>
+          </div>
+          <div class="panel panel-border-narrow js-hidden" id="port-is-postcode">
+            <label class="form-label" for="portpostcode">Enter postcode</label>
+            <input class="form-control" name="portpostcode" type="text" id="portpostcode">
+          </div>
+
+          <div class="multiple-choice" data-target="port-is-name">
+            <input id="port-name" type="radio" name="radio-port-group" value="">
+            <label for="port-name">No location code - enter name</label>
+          </div>
+          <div class="panel panel-border-narrow js-hidden" id="port-is-name">
+            <label class="form-label" for="portname">Enter name</label>
+            <input class="form-control" name="portname" type="text" id="portname">
+          </div>
+
+        </fieldset>
+      </div>
+  </div>
+
+   <div class="form-group">
+	  		<input type="submit" class="button" value="Save">
+        <input type="submit" class="button" value="Save and Continue">
+        <input type="submit" class="button" value="Cancel">
 		</div>
 
     </form>

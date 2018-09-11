@@ -16,6 +16,12 @@ const aircraftdetail = require('./garfile/aircraft')
 //Departure dependencies
 const departuredetail = require('./garfile/departure')
 
+//Arrival dependencies
+const arrivaldetail = require('./garfile/arrival')
+
+//Additional dependencies
+//const additionaldetail = require('./garfile/additionaldetails')
+
 // Export
 module.exports.bind = app => {
     app.use(healthcheck.router)
@@ -24,4 +30,7 @@ module.exports.bind = app => {
     app.use(registerUser.router) 
     app.use(aircraftdetail.router)
     app.use(departuredetail.router)
+    app.use(arrivaldetail.router)
+    //app.use(additionaldetail.router)
+
 }
