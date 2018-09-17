@@ -3,6 +3,10 @@ const path = require('path')
 
 // Npm dependencies
 const express = require('express')
+
+const Keycloak = require ('keycloak-connect')
+const session = require('express-session');
+
 const cookieSession = require('cookie-session')
 const favicon = require('serve-favicon')
 const bodyParser = require('body-parser')
@@ -34,12 +38,29 @@ const JAVASCRIPT_PATH = staticify.getVersionedPath('/javascripts/application.js'
 const GA_ID = (process.env.GA_ID || '')
 const COOKIE_SECRET = (process.env.COOKIE_SECRET || '')
 const BASE_URL = (process.env.BASE_URL || '')
+const app = express
 
 // Define app views
 const APP_VIEWS = [
   path.join(__dirname, '/govuk_modules/govuk_template/views/layouts'),
   __dirname
 ]
+
+//create app sessions
+//session
+function initialisexpresssession(app) {
+app.use(session({
+  secret:'thisShouldBeLongAndSecret',
+  resave: false,
+  saveUninitialized: true,
+  store: memoryStore
+}));
+}
+
+var memoryStore = new session.MemoryStore();
+
+var keycloak = new Keycloak({ store: memoryStore });
+//app.use(keycloak.middleware());
 
 
 function initialiseGlobalMiddleware(app) {

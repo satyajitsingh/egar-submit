@@ -8,7 +8,11 @@ const healthcheck = require('./api/healthcheck')
 const welcome = require('./welcome')
 
 //Register dependencies
-const registerUser = require('./register/user')
+const usersignin = require('./register/user')
+
+const userregister = require('./user/register')
+
+const registermsg = require('./user/regmsg')
 
 //Aircraft dependencies
 const aircraftdetail = require('./garfile/aircraft')
@@ -22,15 +26,21 @@ const arrivaldetail = require('./garfile/arrival')
 //Additional dependencies
 //const additionaldetail = require('./garfile/additionaldetails')
 
+// Misc dependency
+const error = require('./error')
+
 // Export
 module.exports.bind = app => {
     app.use(healthcheck.router)
     app.use(index.router)
     app.use(welcome.router)
-    app.use(registerUser.router) 
+    app.use(usersignin.router) 
+    app.use(userregister.router) 
+    app.use(registermsg.router) 
     app.use(aircraftdetail.router)
     app.use(departuredetail.router)
     app.use(arrivaldetail.router)
+    app.use(error.router)
     //app.use(additionaldetail.router)
 
 }

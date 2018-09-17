@@ -4,6 +4,7 @@ const path = require('path')
 const fs = require('fs')
 const throng = require('throng')
 
+
 const logger = require('./common/utils/logger')
 
 const server = require('./server')
@@ -23,7 +24,7 @@ function start() {
       start: startWorker
     })
   }
-  
+
   /**
    * Start master process
    */
@@ -34,22 +35,22 @@ function start() {
       process.exit()
     })
   }
-  
+
   /**
    * Start cluster worker. Log start and exit
    * @param  {Number} workerId
    */
   function startWorker(workerId) {
     server.start()
-  
+
     logger.info(`Started worker ${workerId}, PID: ${process.pid}`)
-  
+
     process.on('SIGINT', () => {
       logger.info(`Worker ${workerId} exiting...`)
       process.exit()
     })
   }
-  
+
   /**
    * Make sure all child processes are cleaned up
    */
@@ -59,7 +60,7 @@ function start() {
     process.kill(pid, 'SIGTERM')
     process.exit() // eslint-disable-line unicorn/no-process-exit
   }
-  
+
   /**
    * Keep track of processes, and clean up on SIGINT
    */
@@ -67,7 +68,7 @@ function start() {
     fs.writeFileSync(pidFile, process.pid, fileOptions)
     process.on('SIGINT', onInterrupt)
   }
-  
+
   monitor()
-  
+
   start()
