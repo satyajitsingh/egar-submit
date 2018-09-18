@@ -32,7 +32,9 @@ module.exports = {
           });
           resolve(users);
         }).catch(function (err) {
-          logger.error(err);
+          //logger.error(JSON.stringify(err));
+         err.errormessage = JSON.stringify(err);
+          return JSON.stringify(err)
           //Promise.reject(err);
         })
     })

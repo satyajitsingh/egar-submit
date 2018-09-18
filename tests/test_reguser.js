@@ -6,7 +6,14 @@ const testuser = {
   email: 'test15@gmail.com'
 }
 
-var user = reguser_fn.post(testuser)
-console.log(user);
+var usr = reguser_fn.post(testuser)
+if(usr.id != null){
+console.log(JSON.stringify(usr))
+}
+else {
+  console.log('failure')
+  console.log("err: " + JSON.stringify(usr))
+}
+
 
 

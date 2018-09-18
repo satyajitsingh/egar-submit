@@ -14,6 +14,8 @@
 
   {% include "common/templates/includes/back.njk" %}
 
+  {% import "common/templates/includes/macros.njk" as m %}
+
 	{% if errors %}
 		{% include "common/templates/includes/errors.njk" %}
 	{% endif %}
@@ -25,46 +27,48 @@
       <header>
         <h1 class="heading-large">
            Sign Up
+           <span class="heading-secondary">Enter registration details below</span>
         </h1>
       </header>
     <!--</div>-->
-
-    <div>
-    Enter your user details below
+    
       <form action="/user/register" autocomplete="false" class="form-group" method="post" role="form" style="margin-top:20px">                    <input type="password" style="visibility: hidden" />
-        <div class="form-group ">
+        <div class="form-group {{ m.form_group_class('register', errors) }}">
 
-          <label class="form-label" for="user-id">First Name</label>
+          <label class="form-label" for="userFname">First Name</label>
+          {{ m.error_message('userfname', errors) }}
           <span class="form-hint">
             Enter your First name
           </span>
-          <span class="field-validation-valid error-message" data-valmsg-for="UserFname" 
+          <span class="field-validation-valid error-message" data-valmsg-for="userFname" 
             data-valmsg-replace="true" style="display:block">
           </span>
           <input autocomplete="off" class="form-control" 
-            data-val="true" data-val-required="The first name field is  required." id="userFname" name="UserFname" style="width:100%" type="text" value="" />
-
+            data-val="true" data-val-required="The first name field is  required." id="userFname" name="userFname" style="width:100%" type="text" value="" />
            <label class="form-label" for="user-id">Last Name</label>
+            {{ m.error_message('userlname', errors) }}
           <span class="form-hint">
             Enter your Last name
           </span>
-          <span class="field-validation-valid error-message" data-valmsg-for="UserLname" 
+          <span class="field-validation-valid error-message" data-valmsg-for="userLname" 
             data-valmsg-replace="true" style="display:block">
           </span>
           <input autocomplete="off" class="form-control" 
-            data-val="true" data-val-required="The first name field is  required." id="userLname" name="UserLname" style="width:100%" type="text" value="" />
+            data-val="true" data-val-required="The first name field is  required." id="userLname" name="userLname" style="width:100%" type="text" value="" />
 
-          <label class="form-label" for="user-id">Email address</label>
+          <label class="form-label" for="userId">Email Id</label>
+          {{ m.error_message('userId', errors) }}
           <span class="form-hint">
             Enter the email address
           </span>
-          <span class="field-validation-valid error-message" data-valmsg-for="UserId" 
+          <span class="field-validation-valid error-message" data-valmsg-for="userId" 
             data-valmsg-replace="true" style="display:block">
           </span>
           <input autocomplete="off" class="form-control" 
-            data-val="true" data-val-required="The e-mail address field is  required." id="userID" name="UserId" style="width:100%" type="text" value="" />
+            data-val="true" data-val-required="The e-mail address field is  required." id="userId" name="userId" style="width:100%" type="text" value="" />
 
           <label class="form-label" for="password">Password</label>
+          {{ m.error_message('passwd', errors) }}
           <span class="form-hint">
             Enter your password
           </span>
@@ -86,7 +90,5 @@
         <a href="/submit-a-general-aviation-report/Account/PreRegister" onclick="sendAnalytics(event, &#39;Register for a new account&#39;, &#39;click&#39;)" target="_self">Register for a new account</a>
       </p>
     </div>
-
-  </div>
 </main>
 {% endblock %}

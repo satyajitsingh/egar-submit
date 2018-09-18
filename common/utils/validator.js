@@ -2,27 +2,41 @@
 
 module.exports = {
   notEmpty,
-  decimal,
+ // decimal,
   email,
-  wholeNumber,
-  currency,
-  max4DigitsNumber,
-  xlessthanyCheck,
-  moreThanZero,
-  notInfinity,
+  //wholeNumber,
+  //currency,
+  //max4DigitsNumber,
+  //lessthanyCheck,
+  //moreThanZero,
+  //notInfinity,
+  onlySymbols,
+  userexists,
   validateChains
 }
 
 function notEmpty(value) {
-    var regex = "^\\s+$";
-  if (value.match(regex)) {
+  if (value === undefined) {
+    return false
+  }
+  if (value === null) {
+    return false
+  }
+  if (value === '') {
     return false
   }
   //check for space at start
-  /*if(^\\s+$.test(value))
+  if(/^\s/.test(value))
   {
     return false
-  }*/
+  }
+  //check for only symbols
+  if(/^[^a-zA-Z0-9]+$/.test(value)){
+    return false
+  }
+  return true
+}
+function onlySymbols(value){
   //check for only symbols
   if(/^[^a-zA-Z0-9]+$/.test(value)){
     return false
@@ -35,6 +49,9 @@ function email(value) {
   return regex.test(value)
 }
 
+function userexists(value) {
+  return false
+}
 function validateChains(chains) {
     return new Promise(function(resolve, reject) {
       const failedRules = []
